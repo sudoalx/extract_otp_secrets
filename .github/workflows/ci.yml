@@ -53,7 +53,15 @@ jobs:
       #     mypy --strict src/*.py tests/*.py
       #   if: matrix.python-version == '3.x' && matrix.platform == 'ubuntu-latest'
       - name: Test with pytest
-        run: pytest -vvv -s tests/extract_otp_secrets_test.py
+        run: |
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_1
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_2
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_3
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_4
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_5
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_7
+          pytest -vvv -s tests/extract_otp_secrets_test.py
         if: (matrix.python-version != '3.x' || matrix.platform != 'ubuntu-latest')
         # && matrix.platform != 'macos-latest'
       - name: Test with pytest (with code coverage)

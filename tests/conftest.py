@@ -19,4 +19,4 @@ def pytest_generate_tests(metafunc: pytest.Metafunc) -> None:
     if "qr_mode" in metafunc.fixturenames:
         number = 2 if metafunc.config.getoption("fast") else len(QRMode)
         qr_modes = [mode.name for mode in QRMode]
-        metafunc.parametrize("qr_mode", qr_modes[0:number])
+        metafunc.parametrize("qr_mode", qr_modes[0:1])

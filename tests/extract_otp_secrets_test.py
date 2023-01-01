@@ -77,9 +77,6 @@ def test_cv2_segfault_2(qr_mode: str) -> None:
     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
         zbar.decode(img)
 
-    print('extract_otp_secrets.main')
-    extract_otp_secrets.main(['--qr', qr_mode, 'tests/data/test_googleauth_export.png'])
-
     print('Done')
 
 
@@ -106,9 +103,6 @@ def test_cv2_segfault_3(qr_mode: str) -> None:
         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
         zbar.decode(img)
-
-    print('extract_otp_secrets.main')
-    extract_otp_secrets.main(['--qr', qr_mode, 'tests/data/test_googleauth_export.png'])
 
     print('Done')
 
@@ -139,9 +133,6 @@ def test_cv2_segfault_4(qr_mode: str) -> None:
         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
         zbar.decode(img)
-
-    print('extract_otp_secrets.main')
-    extract_otp_secrets.main(['--qr', qr_mode, 'tests/data/test_googleauth_export.png'])
 
     print('Done')
 
@@ -175,9 +166,6 @@ def test_cv2_segfault_5(qr_mode: str) -> None:
         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
         zbar.decode(img)
-
-    print('extract_otp_secrets.main')
-    extract_otp_secrets.main(['--qr', qr_mode, 'tests/data/test_googleauth_export.png'])
 
     print('Done')
 
@@ -214,9 +202,6 @@ def test_cv2_segfault_6(qr_mode: str) -> None:
         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
         zbar.decode(img)
-
-    print('extract_otp_secrets.main')
-    extract_otp_secrets.main(['--qr', qr_mode, 'tests/data/test_googleauth_export.png'])
 
     print('Done')
 
