@@ -43,211 +43,211 @@ qreader_available: bool = extract_otp_secrets.qreader_available
 # @pytest.mark.skipif(sys.platform.startswith("win") or not qreader_available or sys.implementation.name == 'pypy' or sys.version_info >= (3, 10), reason="Quickfix")
 
 
-def test_cv2_segfault_1(qr_mode: str) -> None:
-    print(f'QRmode: {qr_mode}')
+# def test_cv2_segfault_1(qr_mode: str) -> None:
+#     print(f'QRmode: {qr_mode}')
 
-    print('cv2.imread')
-    img = cv2.imread('tests/data/test_googleauth_export.png')
+#     print('cv2.imread')
+#     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+#     qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
 
-    print(f'detect and decode for qr_mode {qr_mode_2}')
+#     print(f'detect and decode for qr_mode {qr_mode_2}')
 
-    print('Done')
+#     print('Done')
 
 
-def test_cv2_segfault_2(qr_mode: str) -> None:
-    print(f'QRmode: {qr_mode}')
+# def test_cv2_segfault_2(qr_mode: str) -> None:
+#     print(f'QRmode: {qr_mode}')
 
-    print('cv2.imread')
-    img = cv2.imread('tests/data/test_googleauth_export.png')
+#     print('cv2.imread')
+#     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+#     qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
 
-    print(f'detect and decode for qr_mode {qr_mode_2}')
-    if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+#     print(f'detect and decode for qr_mode {qr_mode_2}')
+#     if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
 
-        print('cv.QRCodeDetector()')
-        cv2.QRCodeDetector()
+#         print('cv.QRCodeDetector()')
+#         cv2.QRCodeDetector()
 
-    elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
-        cv2.QRCodeDetector().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
-        cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
-        zbar.decode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
+#         cv2.QRCodeDetector().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
+#         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
+#         zbar.decode(img)
 
-    print('Done')
+#     print('Done')
 
 
-def test_cv2_segfault_3(qr_mode: str) -> None:
-    print(f'QRmode: {qr_mode}')
+# def test_cv2_segfault_3(qr_mode: str) -> None:
+#     print(f'QRmode: {qr_mode}')
 
-    print('cv2.imread')
-    img = cv2.imread('tests/data/test_googleauth_export.png')
+#     print('cv2.imread')
+#     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+#     qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
 
-    print(f'detect and decode for qr_mode {qr_mode_2}')
-    if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+#     print(f'detect and decode for qr_mode {qr_mode_2}')
+#     if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
 
-        print('cv.QRCodeDetector()')
-        cv2.QRCodeDetector()
+#         print('cv.QRCodeDetector()')
+#         cv2.QRCodeDetector()
 
-        print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
-        from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
+#         print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
+#         from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
 
-    elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
-        cv2.QRCodeDetector().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
-        cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
-        zbar.decode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
+#         cv2.QRCodeDetector().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
+#         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
+#         zbar.decode(img)
 
-    print('Done')
+#     print('Done')
 
 
-def test_cv2_segfault_4(qr_mode: str) -> None:
-    print(f'QRmode: {qr_mode}')
+# def test_cv2_segfault_4(qr_mode: str) -> None:
+#     print(f'QRmode: {qr_mode}')
 
-    print('cv2.imread')
-    img = cv2.imread('tests/data/test_googleauth_export.png')
+#     print('cv2.imread')
+#     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+#     qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
 
-    print(f'detect and decode for qr_mode {qr_mode_2}')
-    if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+#     print(f'detect and decode for qr_mode {qr_mode_2}')
+#     if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
 
-        print('cv.QRCodeDetector()')
-        cv2.QRCodeDetector()
+#         print('cv.QRCodeDetector()')
+#         cv2.QRCodeDetector()
 
-        print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
-        from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
+#         print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
+#         from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
 
-        print('_YoloV3QRDetector()')
-        _YoloV3QRDetector()
+#         print('_YoloV3QRDetector()')
+#         _YoloV3QRDetector()
 
-    elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
-        cv2.QRCodeDetector().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
-        cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
-        zbar.decode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
+#         cv2.QRCodeDetector().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
+#         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
+#         zbar.decode(img)
 
-    print('Done')
+#     print('Done')
 
 
-def test_cv2_segfault_5(qr_mode: str) -> None:
-    print(f'QRmode: {qr_mode}')
+# def test_cv2_segfault_5(qr_mode: str) -> None:
+#     print(f'QRmode: {qr_mode}')
 
-    print('cv2.imread')
-    img = cv2.imread('tests/data/test_googleauth_export.png')
+#     print('cv2.imread')
+#     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+#     qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
 
-    print(f'detect and decode for qr_mode {qr_mode_2}')
-    if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+#     print(f'detect and decode for qr_mode {qr_mode_2}')
+#     if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
 
-        print('cv.QRCodeDetector()')
-        cv2.QRCodeDetector()
+#         print('cv.QRCodeDetector()')
+#         cv2.QRCodeDetector()
 
-        print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
-        from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
+#         print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
+#         from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
 
-        print('_YoloV3QRDetector()')
-        _YoloV3QRDetector()
+#         print('_YoloV3QRDetector()')
+#         _YoloV3QRDetector()
 
-        print('from qreader import QReader')
-        from qreader import QReader
+#         print('from qreader import QReader')
+#         from qreader import QReader
 
-    elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
-        cv2.QRCodeDetector().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
-        cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
-        zbar.decode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
+#         cv2.QRCodeDetector().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
+#         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
+#         zbar.decode(img)
 
-    print('Done')
+#     print('Done')
 
 
-def test_cv2_segfault_6(qr_mode: str) -> None:
-    print(f'QRmode: {qr_mode}')
+# def test_cv2_segfault_6(qr_mode: str) -> None:
+#     print(f'QRmode: {qr_mode}')
 
-    print('cv2.imread')
-    img = cv2.imread('tests/data/test_googleauth_export.png')
+#     print('cv2.imread')
+#     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+#     qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
 
-    print(f'detect and decode for qr_mode {qr_mode_2}')
-    if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+#     print(f'detect and decode for qr_mode {qr_mode_2}')
+#     if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
 
-        print('cv.QRCodeDetector()')
-        cv2.QRCodeDetector()
+#         print('cv.QRCodeDetector()')
+#         cv2.QRCodeDetector()
 
-        print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
-        from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
+#         print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
+#         from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
 
-        print('_YoloV3QRDetector()')
-        _YoloV3QRDetector()
+#         print('_YoloV3QRDetector()')
+#         _YoloV3QRDetector()
 
-        print('from qreader import QReader')
-        from qreader import QReader
+#         print('from qreader import QReader')
+#         from qreader import QReader
 
-        print('QReader()')
-        qreader = QReader()
+#         print('QReader()')
+#         qreader = QReader()
 
-    elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
-        cv2.QRCodeDetector().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
-        cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
-        zbar.decode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
+#         cv2.QRCodeDetector().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
+#         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
+#         zbar.decode(img)
 
-    print('Done')
+#     print('Done')
 
 
-def test_cv2_segfault_6_d0(qr_mode: str) -> None:
-    print(f'QRmode: {qr_mode}')
+# def test_cv2_segfault_6_d0(qr_mode: str) -> None:
+#     print(f'QRmode: {qr_mode}')
 
-    print('cv2.imread')
-    img = cv2.imread('tests/data/test_googleauth_export.png')
+#     print('cv2.imread')
+#     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+#     qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
 
-    print(f'detect and decode for qr_mode {qr_mode_2}')
-    if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+#     print(f'detect and decode for qr_mode {qr_mode_2}')
+#     if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
 
-        print('cv.QRCodeDetector()')
-        cv2_qr =cv2.QRCodeDetector()
+#         print('cv.QRCodeDetector()')
+#         cv2_qr =cv2.QRCodeDetector()
 
-        print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
-        from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
+#         print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
+#         from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
 
-        print('_YoloV3QRDetector()')
-        yolo = _YoloV3QRDetector()
+#         print('_YoloV3QRDetector()')
+#         yolo = _YoloV3QRDetector()
 
-        print('from qreader import QReader')
-        from qreader import QReader
+#         print('from qreader import QReader')
+#         from qreader import QReader
 
-        print('QReader()')
-        qreader = QReader()
+#         print('QReader()')
+#         qreader = QReader()
 
-        print('cv2.dnn.blobFromImage')
-        _INPUT_SIZE = (416, 416)
-        _CONF_THRESHOLD = 0.5
+#         print('cv2.dnn.blobFromImage')
+#         _INPUT_SIZE = (416, 416)
+#         _CONF_THRESHOLD = 0.5
 
-        blob = cv2.dnn.blobFromImage(img, 1 / 255, _INPUT_SIZE, swapRB=False, crop=False)
-        # self.yolo_v3_QR_detector.setInput(blob=blob)
-        # output = self.yolo_v3_QR_detector.forward(self.output_layer_name)
+#         blob = cv2.dnn.blobFromImage(img, 1 / 255, _INPUT_SIZE, swapRB=False, crop=False)
+#         # self.yolo_v3_QR_detector.setInput(blob=blob)
+#         # output = self.yolo_v3_QR_detector.forward(self.output_layer_name)
 
-    elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
-        cv2.QRCodeDetector().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
-        cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
-        zbar.decode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
+#         cv2.QRCodeDetector().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
+#         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
+#         zbar.decode(img)
 
-    print('Done')
+#     print('Done')
 
 
 def test_cv2_segfault_6_d1(qr_mode: str) -> None:
@@ -296,52 +296,104 @@ def test_cv2_segfault_6_d1(qr_mode: str) -> None:
     print('Done')
 
 
-def test_cv2_segfault_6_d2(qr_mode: str) -> None:
-    print(f'QRmode: {qr_mode}')
-
+def test_cv2_segfault_6_f0() -> None:
     print('cv2.imread')
     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+    yolo_v3_QR_detector = cv2.dnn.readNetFromDarknet(cfgFile='tests/data/qrcode-yolov3-tiny.cfg', darknetModel='tests/data/qrcode-yolov3-tiny_last.weights')
+    yolo_v3_QR_detector.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
 
-    print(f'detect and decode for qr_mode {qr_mode_2}')
-    if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+    output_layer_names = yolo_v3_QR_detector.getLayerNames()
+    output_layer_name = output_layer_names[yolo_v3_QR_detector.getUnconnectedOutLayers()[0] - 1]
 
-        print('cv.QRCodeDetector()')
-        cv2_qr =cv2.QRCodeDetector()
+    print('cv2.dnn.blobFromImage')
+    _INPUT_SIZE = (416, 416)
+    _CONF_THRESHOLD = 0.5
 
-        print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
-        from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
+    blob = cv2.dnn.blobFromImage(img, 1 / 255, _INPUT_SIZE, swapRB=False, crop=False)
 
-        print('_YoloV3QRDetector()')
-        yolo = _YoloV3QRDetector()
+    print('yolo.yolo_v3_QR_detector.setInput')
+    yolo_v3_QR_detector.setInput(blob=blob)
 
-        print('from qreader import QReader')
-        from qreader import QReader
-
-        print('QReader()')
-        qreader = QReader()
-
-        print('cv2.dnn.blobFromImage')
-        _INPUT_SIZE = (416, 416)
-        _CONF_THRESHOLD = 0.5
-
-        blob = cv2.dnn.blobFromImage(img, 1 / 255, _INPUT_SIZE, swapRB=False, crop=False)
-
-        print('yolo.yolo_v3_QR_detector.setInput')
-        yolo.yolo_v3_QR_detector.setInput(blob=blob)
-
-        print('yolo.yolo_v3_QR_detector.forward')
-        output = yolo.yolo_v3_QR_detector.forward(yolo.output_layer_name)
-
-    elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
-        cv2.QRCodeDetector().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
-        cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
-    elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
-        zbar.decode(img)
+    # Transform the image to blob and predict
+    # print('yolo_v3_QR_detector.forward')
+    # output = yolo_v3_QR_detector.forward(output_layer_name)
 
     print('Done')
+
+
+def test_cv2_segfault_6_f1() -> None:
+    print('cv2.imread')
+    img = cv2.imread('tests/data/test_googleauth_export.png')
+
+    yolo_v3_QR_detector = cv2.dnn.readNetFromDarknet(cfgFile='tests/data/qrcode-yolov3-tiny.cfg', darknetModel='tests/data/qrcode-yolov3-tiny_last.weights')
+    yolo_v3_QR_detector.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+
+    output_layer_names = yolo_v3_QR_detector.getLayerNames()
+    output_layer_name = output_layer_names[yolo_v3_QR_detector.getUnconnectedOutLayers()[0] - 1]
+
+    print('cv2.dnn.blobFromImage')
+    _INPUT_SIZE = (416, 416)
+    _CONF_THRESHOLD = 0.5
+
+    blob = cv2.dnn.blobFromImage(img, 1 / 255, _INPUT_SIZE, swapRB=False, crop=False)
+
+    print('yolo.yolo_v3_QR_detector.setInput')
+    yolo_v3_QR_detector.setInput(blob=blob)
+
+    # Transform the image to blob and predict
+    print('yolo_v3_QR_detector.forward')
+    output = yolo_v3_QR_detector.forward(output_layer_name)
+
+    print('Done')
+
+
+# def test_cv2_segfault_6_d2(qr_mode: str) -> None:
+#     print(f'QRmode: {qr_mode}')
+
+#     print('cv2.imread')
+#     img = cv2.imread('tests/data/test_googleauth_export.png')
+
+#     qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
+
+#     print(f'detect and decode for qr_mode {qr_mode_2}')
+#     if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+
+#         print('cv.QRCodeDetector()')
+#         cv2_qr =cv2.QRCodeDetector()
+
+#         print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
+#         from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
+
+#         print('_YoloV3QRDetector()')
+#         yolo = _YoloV3QRDetector()
+
+#         print('from qreader import QReader')
+#         from qreader import QReader
+
+#         print('QReader()')
+#         qreader = QReader()
+
+#         print('cv2.dnn.blobFromImage')
+#         _INPUT_SIZE = (416, 416)
+#         _CONF_THRESHOLD = 0.5
+
+#         blob = cv2.dnn.blobFromImage(img, 1 / 255, _INPUT_SIZE, swapRB=False, crop=False)
+
+#         print('yolo.yolo_v3_QR_detector.setInput')
+#         yolo.yolo_v3_QR_detector.setInput(blob=blob)
+
+#         print('yolo.yolo_v3_QR_detector.forward')
+#         output = yolo.yolo_v3_QR_detector.forward(yolo.output_layer_name)
+
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
+#         cv2.QRCodeDetector().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
+#         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
+#     elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
+#         zbar.decode(img)
+
+#     print('Done')
 
 
 # def test_cv2_segfault_6_d1(qr_mode: str) -> None:
