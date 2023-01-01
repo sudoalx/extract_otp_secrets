@@ -26,6 +26,7 @@ import sys
 import colorama
 import cv2  # type: ignore
 import pyzbar.pyzbar as zbar  # type: ignore
+from qreader import QReader
 
 import pytest
 from pytest_mock import MockerFixture
@@ -49,16 +50,16 @@ def test_cv2_segfault(qr_mode: str) -> None:
     print('cv2.imread')
     img = cv2.imread('tests/data/test_googleauth_export.png')
 
-    qr_mode_2 = QRMode[qr_mode]
+    qr_mode_2 = extract_otp_secrets.QRMode[qr_mode]
 
     print(f'detect and decode for qr_mode {qr_mode_2}')
-    if qr_mode_2 in [QRMode.QREADER, QRMode.DEEP_QREADER]:
-        QReader().detect_and_decode(img, qr_mode == QRMode.DEEP_QREADER)
-    elif qr_mode_2 == QRMode.CV2:
+    if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+        QReader().detect_and_decode(img, qr_mode == extract_otp_secrets.QRMode.DEEP_QREADER)
+    elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
         cv2.QRCodeDetector().detectAndDecode(img)
-    elif qr_mode_2 == QRMode.WECHAT:
+    elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
         cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
-    elif qr_mode_2 == QRMode.ZBAR:
+    elif qr_mode_2 == extract_otp_secrets.QRMode.ZBAR:
         zbar.decode(img)
 
     print('extract_otp_secrets.main')
