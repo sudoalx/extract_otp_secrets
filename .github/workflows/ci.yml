@@ -60,6 +60,8 @@ jobs:
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_4
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_5
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d1
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d2
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_a
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_b
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_7
