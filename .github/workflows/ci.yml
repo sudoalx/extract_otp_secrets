@@ -1,8 +1,5 @@
 name: tests
 
-# https://docs.github.com/de/actions/using-workflows/workflow-syntax-for-github-actions
-# https://docs.github.com/en/actions/using-workflows
-
 on:
   push:
 
@@ -13,7 +10,7 @@ jobs:
       matrix:
         python-version: ["3.11"]
         # platform: [ubuntu-latest, macos-latest, windows-latest]
-        platform: [macos-latest]
+        platform: [macos-11]
         # exclude:
 
     runs-on: ${{ matrix.platform }}
@@ -32,10 +29,10 @@ jobs:
       - name: Test with pytest cv2 4.6
         run: |
           pip install --force-reinstall -v "opencv-contrib-python==4.6.0.66"
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f0
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f1
+          pytest -vvv -s tests/cv2_segfault_repro.py::test_cv2_segfault_6_f0
+          pytest -vvv -s tests/cv2_segfault_repro.py::test_cv2_segfault_6_f1
       - name: Test with pytest cv2 4.7
         run: |
           pip install --force-reinstall -v "opencv-contrib-python>=4.7.0"
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f0
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f1
+          pytest -vvv -s tests/cv2_segfault_repro.py::test_cv2_segfault_6_f0
+          pytest -vvv -s tests/cv2_segfault_repro.py::test_cv2_segfault_6_f1
