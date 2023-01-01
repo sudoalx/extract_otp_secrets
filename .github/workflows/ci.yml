@@ -60,10 +60,9 @@ jobs:
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_4
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_5
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d0
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d1
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d2
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_m
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_n
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_7
           pytest -vvv -s tests/extract_otp_secrets_test.py
         if: (matrix.python-version != '3.x' || matrix.platform != 'ubuntu-latest')
