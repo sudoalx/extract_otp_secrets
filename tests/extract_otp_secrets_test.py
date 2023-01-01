@@ -30,14 +30,10 @@ import pyzbar.pyzbar as zbar  # type: ignore
 import pytest
 from pytest_mock import MockerFixture
 
-import extract_otp_secrets
 from utils import (file_exits, quick_and_dirty_workaround_encoding_problem,
                    read_binary_file_as_stream, read_csv, read_csv_str,
                    read_file_to_str, read_json, read_json_str,
                    replace_escaped_octal_utf8_bytes_with_str, count_files_in_dir)
-
-qreader_available: bool = extract_otp_secrets.qreader_available
-
 
 # Quickfix comment
 # @pytest.mark.skipif(sys.platform.startswith("win") or not qreader_available or sys.implementation.name == 'pypy' or sys.version_info >= (3, 10), reason="Quickfix")
