@@ -29,10 +29,10 @@ jobs:
       - name: Test with pytest cv2 4.6
         run: |
           pip install --force-reinstall -v "opencv-contrib-python==4.6.0.66"
-          pytest -vvv -s tests/cv2_segfault_repro.py::test_cv2_segfault_6_f0
-          pytest -vvv -s tests/cv2_segfault_repro.py::test_cv2_segfault_6_f1
+          pytest -vvv -s tests/cv2_segfault_repro_test.py::test_cv2_segfault_6_f0
+          pytest -vvv -s tests/cv2_segfault_repro_test.py::test_cv2_segfault_6_f1
       - name: Test with pytest cv2 4.7
         run: |
           pip install --force-reinstall -v "opencv-contrib-python>=4.7.0"
-          pytest -vvv -s tests/cv2_segfault_repro.py::test_cv2_segfault_6_f0
-          pytest -vvv -s tests/cv2_segfault_repro.py::test_cv2_segfault_6_f1
+          pytest -vvv -s tests/cv2_segfault_repro_test.py::test_cv2_segfault_6_f0
+          pytest -vvv -s tests/cv2_segfault_repro_test.py::test_cv2_segfault_6_f1
