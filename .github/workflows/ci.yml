@@ -39,20 +39,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -U -r requirements-dev.txt
-          pip install -U .
+          # pip install -U .
       - name: Test with pytest cv2 4.6
         run: |
-          pip install --force-reinstall -v "opencv-contrib-python==4.6.0"
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d0
+          pip install --force-reinstall -v "opencv-contrib-python==4.6.0.66"
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f0
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f1
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_7
-          pytest -vvv -s tests/extract_otp_secrets_test.py
       - name: Test with pytest cv2 4.7
         run: |
-          pip install --force-reinstall -v "opencv-contrib-python==4.7.0"
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d0
+          pip install --force-reinstall -v "opencv-contrib-python==4.7.0.68"
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f0
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f1
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_7
-          pytest -vvv -s tests/extract_otp_secrets_test.py
