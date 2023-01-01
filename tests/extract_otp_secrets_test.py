@@ -26,7 +26,6 @@ import sys
 import colorama
 import cv2  # type: ignore
 import pyzbar.pyzbar as zbar  # type: ignore
-from qreader import QReader
 
 import pytest
 from pytest_mock import MockerFixture
@@ -54,7 +53,25 @@ def test_cv2_segfault(qr_mode: str) -> None:
 
     print(f'detect and decode for qr_mode {qr_mode_2}')
     if qr_mode_2 in [extract_otp_secrets.QRMode.QREADER, extract_otp_secrets.QRMode.DEEP_QREADER]:
+
+        print('cv.QRCodeDetector()')
+        cv2.QRCodeDetector()
+
+        print('from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector')
+        from __yolo_v3_qr_detector.yolov3_qr_detector import _YoloV3QRDetector
+
+        print('_YoloV3QRDetector()')
+        _YoloV3QRDetector()
+
+        print('from qreader import QReader')
+        from qreader import QReader
+
+        print('QReader()')
+        qreader = QReader()
+
+        print('QReader().detect_and_decode')
         QReader().detect_and_decode(img, qr_mode == extract_otp_secrets.QRMode.DEEP_QREADER)
+
     elif qr_mode_2 == extract_otp_secrets.QRMode.CV2:
         cv2.QRCodeDetector().detectAndDecode(img)
     elif qr_mode_2 == extract_otp_secrets.QRMode.WECHAT:
