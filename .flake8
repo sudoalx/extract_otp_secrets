@@ -1,6 +1,0 @@
-[flake8]
-ignore =
-    E701
-exclude =
-    protobuf_generated_python
-    __pycache__
