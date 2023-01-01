@@ -43,15 +43,27 @@ qreader_available: bool = extract_otp_secrets.qreader_available
 # @pytest.mark.skipif(sys.platform.startswith("win") or not qreader_available or sys.implementation.name == 'pypy' or sys.version_info >= (3, 10), reason="Quickfix")
 
 
-def test_cv2_segfault() -> None:
-    # Act
+def test_cv2_segfault(qr_mode: str) -> None:
+    print(f'QRmode: {qr_mode}')
+
     print('cv2.imread')
     img = cv2.imread('tests/data/test_googleauth_export.png')
-    print('zbar.decode')
-    zbar.decode(img)
+
+    qr_mode_2 = QRMode[qr_mode]
+
+    print(f'detect and decode for qr_mode {qr_mode_2}')
+    if qr_mode_2 in [QRMode.QREADER, QRMode.DEEP_QREADER]:
+        QReader().detect_and_decode(img, qr_mode == QRMode.DEEP_QREADER)
+    elif qr_mode_2 == QRMode.CV2:
+        cv2.QRCodeDetector().detectAndDecode(img)
+    elif qr_mode_2 == QRMode.WECHAT:
+        cv2.wechat_qrcode.WeChatQRCode().detectAndDecode(img)
+    elif qr_mode_2 == QRMode.ZBAR:
+        zbar.decode(img)
 
     print('extract_otp_secrets.main')
-    extract_otp_secrets.main(['tests/data/test_googleauth_export.png'])
+    extract_otp_secrets.main(['--qr', qr_mode, 'tests/data/test_googleauth_export.png'])
+
     print('Done')
 
 
