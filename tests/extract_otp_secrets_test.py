@@ -287,7 +287,7 @@ def test_cv2_segfault_6_d2(qr_mode: str) -> None:
     print('Done')
 
 
-def test_cv2_segfault_6_a(qr_mode: str) -> None:
+def test_cv2_segfault_6_m(qr_mode: str) -> None:
     print(f'QRmode: {qr_mode}')
 
     print('cv2.imread')
@@ -326,7 +326,7 @@ def test_cv2_segfault_6_a(qr_mode: str) -> None:
     print('Done')
 
 
-def test_cv2_segfault_6_b(qr_mode: str) -> None:
+def test_cv2_segfault_6_n(qr_mode: str) -> None:
     print(f'QRmode: {qr_mode}')
 
     print('cv2.imread')
