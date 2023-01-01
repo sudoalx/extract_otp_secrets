@@ -52,7 +52,7 @@ jobs:
           mypy --strict src/*.py tests/*.py
         if: matrix.python-version == '3.x' && matrix.platform == 'ubuntu-latest'
       - name: Test with pytest
-        run: pytest -vvv
+        run: pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault
         if: (matrix.python-version != '3.x' || matrix.platform != 'ubuntu-latest')
         # && matrix.platform != 'macos-latest'
       - name: Test with pytest (with code coverage)
