@@ -40,40 +40,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -U -r requirements-dev.txt
           pip install -U .
-      # - name: Lint with flake8
-      #   run: |
-      #     # stop the build if there are Python syntax errors or undefined names
-      #     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-      #     # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-      #     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=200 --statistics
-      #   if: matrix.python-version != '3.7'
-      # - name: Type checking with mypy
-      #   run: |
-      #     mypy --install-types --non-interactive src/*.py tests/*.py
-      #     mypy --strict src/*.py tests/*.py
-      #   if: matrix.python-version == '3.x' && matrix.platform == 'ubuntu-latest'
-      - name: Test with pytest
+      - name: Test with pytest cv2 4.6
         run: |
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_1
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_2
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_3
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_4
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_5
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6
+          pip install --force-reinstall -v "opencv-contrib-python==4.6.0"
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d0
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d1
-          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d2
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f0
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f1
           pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_7
           pytest -vvv -s tests/extract_otp_secrets_test.py
-        if: (matrix.python-version != '3.x' || matrix.platform != 'ubuntu-latest')
-        # && matrix.platform != 'macos-latest'
-      - name: Test with pytest (with code coverage)
-        run: pytest --cov=extract_otp_secrets_test --junitxml=pytest.xml --cov-report=term-missing | tee pytest-coverage.txt
-        if: matrix.python-version == '3.x' && matrix.platform == 'ubuntu-latest'
-      # https://github.com/marketplace/actions/pytest-coverage-comment
-      - name: Pytest coverage comment
-        uses: MishaKav/pytest-coverage-comment@main
-        with:
-          pytest-coverage-path: ./pytest-coverage.txt
-          junitxml-path: ./pytest.xml
-        if: matrix.python-version == '3.x' && matrix.platform == 'ubuntu-latest'
+      - name: Test with pytest cv2 4.7
+        run: |
+          pip install --force-reinstall -v "opencv-contrib-python==4.7.0"
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_d0
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f0
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_6_f1
+          pytest -vvv -s tests/extract_otp_secrets_test.py::test_cv2_segfault_7
+          pytest -vvv -s tests/extract_otp_secrets_test.py
