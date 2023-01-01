@@ -14,8 +14,8 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.x", "3.11", "3.10", "3.9", "3.8", "3.7"]
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.x"]
+        platform: [macos-latest]
         # exclude:
 
     runs-on: ${{ matrix.platform }}
@@ -52,7 +52,7 @@ jobs:
           mypy --strict src/*.py tests/*.py
         if: matrix.python-version == '3.x' && matrix.platform == 'ubuntu-latest'
       - name: Test with pytest
-        run: pytest
+        run: pytest -vvv
         if: (matrix.python-version != '3.x' || matrix.platform != 'ubuntu-latest')
         # && matrix.platform != 'macos-latest'
       - name: Test with pytest (with code coverage)

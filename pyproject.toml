@@ -34,7 +34,7 @@ dependencies = [
   "Pillow",
   "qreader",
   "pyzbar",
-  "opencv-contrib-python<=4.7.0; sys_platform == 'darwin'",
+  "opencv-contrib-python>=4.7.0; sys_platform == 'darwin'",
   "opencv-contrib-python; sys_platform != 'darwin'",
   "typing_extensions; python_version<='3.7'",
   "colorama>=0.4.6",
