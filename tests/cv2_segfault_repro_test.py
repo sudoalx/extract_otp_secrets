@@ -32,7 +32,7 @@ def test_cv2_segfault_6_f0() -> None:
 
 
 def test_cv2_segfault_6_f1() -> None:
-    print(cv.__version__)
+    print(cv2.__version__)
 
     print('cv2.imread')
     img = cv2.imread('tests/data/test_googleauth_export.png')
