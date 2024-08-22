@@ -34,6 +34,7 @@ from __future__ import annotations  # workaround for PYTHON <= 3.10
 
 import argparse
 import base64
+import uuid
 import csv
 import fileinput
 import json
@@ -131,6 +132,24 @@ Otps = List[Otp]
 # workaround for PYTHON <= 3.9: OtpUrls = list[OtpUrl]
 OtpUrls = List[OtpUrl]
 
+# Bitwarden JSON format
+Login = TypedDict('Login', {'totp': OtpUrl})
+
+BitwardenItem = TypedDict('BitwardenItem', {
+    'id': str,
+    'name': str,
+    'folderId': Optional[str],
+    'organizationId': Optional[str],
+    'collectionIds': Optional[List[str]],
+    'notes': Optional[str],
+    'type': int,
+    'login': Login,
+    'favorite': bool
+})
+
+# Workaround for PYTHON <= 3.9: BitwardenItems = list[BitwardenItem]
+BitwardenItems = List[BitwardenItem]
+
 QRMode = Enum('QRMode', ['ZBAR', 'QREADER', 'QREADER_DEEP', 'CV2', 'CV2_WECHAT'], start=0)
 LogLevel = IntEnum('LogLevel', ['QUIET', 'NORMAL', 'VERBOSE', 'MORE_VERBOSE', 'DEBUG'], start=-1)
 
@@ -187,6 +206,7 @@ def main(sys_args: list[str]) -> None:
     write_csv(args.csv, otps)
     write_keepass_csv(args.keepass, otps)
     write_json(args.json, otps)
+    write_json_bitwarden(args.json_bitwarden, otps)
     write_txt(args.txt, otps, True)
     write_urls(args.urls, otps)
 
@@ -223,7 +243,7 @@ def get_payload_from_otp_url(otp_url: str, i: int, source: str) -> Optional[pb.M
 
 
 def extract_otp_from_otp_url(otpauth_migration_url: str, otps: Otps, urls_count: int, infile: str, args: Args) -> int:
-    '''Converts the otp migration payload into a normal Python dictionary. This function is the core of the this appliation.'''
+    '''Converts the otp migration payload into a normal Python dictionary. This function is the core of the application.'''
     payload = get_payload_from_otp_url(otpauth_migration_url, urls_count, infile)
 
     if not payload:
@@ -284,6 +304,7 @@ b) image file containing a QR code or = for stdin for an image containing a QR c
     arg_parser.add_argument('--csv', '-c', help='export csv file, or - for stdout', metavar=('FILE'))
     arg_parser.add_argument('--keepass', '-k', help='export totp/hotp csv file(s) for KeePass, - for stdout', metavar=('FILE'))
     arg_parser.add_argument('--json', '-j', help='export json file or - for stdout', metavar=('FILE'))
+    arg_parser.add_argument('--json-bitwarden', '-jb', help='export Bitwarden json file or - for stdout', metavar=('FILE'))
     arg_parser.add_argument('--txt', '-t', help='export txt file or - for stdout', metavar=('FILE'))
     arg_parser.add_argument('--urls', '-u', help='export file with list of otpauth urls, or - for stdout', metavar=('FILE'))
     arg_parser.add_argument('--printqr', '-p', help='print QR code(s) as text to the terminal', action='store_true')
@@ -303,7 +324,7 @@ b) image file containing a QR code or = for stdin for an image containing a QR c
     output_group.add_argument('-q', '--quiet', help='no stdout output, except output set by -', action='store_true')
     args = arg_parser.parse_args(sys_args)
     colored = not args.no_color
-    if args.csv == '-' or args.json == '-' or args.keepass == '-' or args.txt == '-' or args.urls == '-':
+    if args.csv == '-' or args.json == '-' or args.keepass == '-' or args.txt == '-' or args.urls == '-' or args.json_bitwarden == '-':
         args.quiet = args.q = True
 
     verbose = args.verbose if args.verbose else LogLevel.NORMAL
@@ -792,6 +813,34 @@ def write_json(file: str, otps: Otps) -> None:
             json.dump(otps, outfile, indent=4)
         if not quiet: print(f"Exported {len(otps)} otp{'s'[:len(otps) != 1]} to json {file}")
 
+
+def generate_id() -> str:
+    return str(uuid.uuid4())
+
+def write_json_bitwarden(file: str, otps: Otps) -> BitwardenItems:
+    bitwarden_items = []
+    
+    for otp in otps:
+        # skip hotp
+        if otp['type'] == 'hotp':
+            print(f"Skipping hotp {otp['name']}. Only totp is supported at the moment.")
+            continue
+        bitwarden_item = BitwardenItem(
+            id=generate_id(),
+            name=otp['name'],
+            folderId=None,
+            organizationId=None,
+            collectionIds=None,
+            notes=None,
+            type=1,  # Assuming `type` is always 1 for login items
+            login=Login(totp=otp['url']),
+            favorite=False
+        )
+        bitwarden_items.append(bitwarden_item)
+    if file and len(file) > 0:
+        with open_file_or_stdout(file) as outfile:
+            json.dump(bitwarden_items, outfile, indent=4)
+        if not quiet: print(f"Exported {len(otps)} otp{'s'[:len(otps) != 1]} to Bitwarden json {file}")
 
 def has_otp_type(otps: Otps, otp_type: str) -> bool:
     for otp in otps:
