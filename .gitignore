@@ -35,3 +35,4 @@ extract_otp_secrets.build/
 extract_otp_secrets.dist/
 extract_otp_secrets.onefile-build/
 extract_otp_secrets.bin
+export.txt
